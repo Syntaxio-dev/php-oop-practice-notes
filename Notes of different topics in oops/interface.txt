@@ -1,0 +1,94 @@
+1. Interface
+
+Simple English Definition: An Interface is a contract that specifies what methods a class must implement, without providing any implementation code
+
+. It defines a standard set of actions that any class implementing it must perform
+
+
+
+Hinglish Explanation: Interface sirf ek rules ki list (checklist) hoti hai jo batati hai ki ek class ko kaun-kaun se functions (methods) banane padenge
+
+. Iske andar hum sirf function ka naam likhte hain, par woh function kaam kaise karega (logic), yeh Interface nahi batata; yeh kaam us class ka hota hai jo Interface ko use karti hai
+
+
+
+2. Syntax aur Keywords
+
+Definition: Interface banane ke liye interface keyword ka use hota hai
+.
+Implementation: Jab koi class kisi interface ko use karti hai, toh implements keyword ka upyog kiya jata hai
+
+
+Practical Code Example:
+
+
+<?php
+// Interface banana (Rules define karna)
+interface ProductFeatures {
+    public function images(); // Sirf signature, body nahi [3]
+    public function ownerDetails(); 
+}
+
+// Class mein implement karna
+class Products implements ProductFeatures {
+    public function images() {
+        echo "Product Images logic here"; // Logic dena zaroori hai [6]
+    }
+
+    public function ownerDetails() {
+        echo "Owner Details logic here";
+    }
+}
+?>
+
+
+3. Mukhya Baatein (Key Points for Notes):
+
+Mandatory Methods: Agar ek class ne interface implement kiya hai, toh usey us interface ke saare methods ko define karna hi padega, warna PHP error dega
+.
+No Method Body: Interface ke andar kisi bhi method ki body ({ }) nahi ho sakti, sirf semicolon (;) par khatam hota hai
+.
+Public Access: Interface ke saare methods hamesha public hone chahiye
+.
+No Properties: Interface ke andar aap variables (properties) nahi rakh sakte, sirf constants allowed hain
+.
+Multiple Inheritance: PHP mein ek class ek hi parent class ko extend kar sakti hai, par ek class multiple interfaces ko ek saath implement kar sakti hai
+
+
+
+
+4. Interface vs. Abstract Class (Quick Comparison)
+Aapke interview ke liye yeh table bahut zaroori hai:
+Feature
+Interface
+Abstract Class
+Methods
+Sirf signatures (no body)
+.
+Normal aur Abstract dono methods ho sakte hain
+.
+Properties
+Bilkul allowed nahi hain
+.
+Variables (properties) ho sakte hain
+.
+Keyword
+interface aur implements
+.
+abstract aur extends
+.
+Inheritance
+Ek class kai interfaces implement kar sakti hai
+.
+Ek class sirf ek hi class ko extend kar sakti hai
+.
+Access Level
+Sirf public methods
+.
+public ya protected methods ho sakte hain
+
+
+
+
+Bhai, yaad rakhna: Interface tab use karte hain jab humein sirf ek Standard/Contract set karna ho ki "yeh kaam hona chahiye," aur Abstract Class tab use karte hain jab humein kuch code share bhi karna ho
+.

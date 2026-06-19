@@ -1,0 +1,53 @@
+Abstract Class in PHP
+1. Simple English Definition: An Abstract Class is a template or base class that cannot be instantiated (you cannot create its object). It is used to define common features and force child classes to implement specific methods
+.
+2. Hinglish Explanation (Asaan Bhasha Mein):
+Abstract class ek aisa "adha-adhura naksha" (incomplete blueprint) hai jise aap direct use nahi kar sakte
+.
+Iska sabse bada rule yeh hai ki aap new keyword ka use karke iska object nahi bana sakte
+.
+Isey hamesha doosri classes ke zariye extends (inherit) karna padta hai
+.
+Iska main maqsad "Rules" ya "Checklist" banana hota hai taaki jo bhi child class isey inherit kare, woh un zaroori methods ko zaroor banaye
+.
+Abstract Method Kya Hota Hai?
+Simple English: An Abstract Method is a method that is declared but not implemented (it has no body/code block).
+Hinglish: Yeh ek aisa function hota hai jiske aage abstract keyword lagaya jata hai aur iski koi body ({ }) nahi hoti, sirf semicolon (;) par khatam ho jata hai
+.
+Zaroori Rule: Agar kisi class mein ek bhi abstract method hai, toh us class ka abstract hona mandatory hai
+.
+Mukhya Baatein (Key Points for Notes):
+Mandatory Implementation: Jo bhi child class abstract class ko inherit karti hai, usey parent ke saare abstract methods ko define karna hi padega, warna error aayega
+.
+Signature Match: Child class mein method banate waqt parameters aur data types wahi hone chahiye jo parent abstract method mein define kiye gaye thay
+.
+Normal Methods: Abstract class ke andar aap normal methods (jinki body hoti hai) bhi rakh sakte ho jo child classes mein directly use ho sakein
+.
+Access Levels: Abstract methods public ya protected ho sakte hain, par woh private nahi ho sakte kyunki private cheezein inherit nahi hoti
+.
+Practical Code Example (Copy karne ke liye):
+<?php
+// 1. Abstract Class banana
+abstract class Product {
+    // Abstract Method (Sirf rules set kiye hain)
+    abstract function getPrice();
+
+    // Normal Method (Body ke saath)
+    public function description() {
+        echo "This is a product.";
+    }
+}
+
+// 2. Child Class (Ismein logic dena zaroori hai)
+class Laptop extends Product {
+    public function getPrice() {
+        return "Price is 50,000 INR";
+    }
+}
+
+// Object sirf child class ka banega
+$obj = new Laptop();
+echo $obj->getPrice(); // Output: Price is 50,000 INR
+?>
+Conclusion: Abstract class hamesha tab use karein jab aap chahte hon ki "Yeh kaam hona toh chahiye, par kaise hoga yeh child class khud tay karegi"
+.

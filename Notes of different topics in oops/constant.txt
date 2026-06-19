@@ -1,0 +1,65 @@
+Class Constants in PHP
+
+1. Simple English Definition: Class Constants are variables that remain unchanged throughout the execution of a program. Once defined inside a class using the const keyword, their value cannot be modified or redefined.
+
+2. Hinglish Explanation (Asaan Bhasha Mein):
+Constant ka matlab hota hai aisi value jo hamesha ek jaisi rahe
+.
+Inhe class ke andar const keyword ka use karke banaya jata hai
+.
+Inke naam ke aage $ sign nahi lagaya jata (jaise normal variables mein lagta hai)
+.
+Use Case: Jaise kisi college management project mein "College Name" hamesha same rahega, toh use constant banana sahi rehta hai
+
+
+
+
+Constants ko Access Kaise Karein?
+Class constants ko access karne ke do mukhya tarike hain:
+
+Class ke Bahar (Outside Class): Inhe access karne ke liye object banane ki zaroorat nahi hoti. Aap directly ClassName::CONSTANT_NAME karke call kar sakte ho
+. Ise Scope Resolution Operator (::) kehte hain
+
+
+
+Class ke Andar (Inside Method): Agar class ke kisi function ke andar constant use karna hai, toh self:: keyword ka use hota hai
+.
+Note: Constants ke saath $this ka use nahi kiya ja sakta, kyunki $this sirf objects ke liye hota hai
+
+
+
+Access Modifiers with Constants
+
+PHP mein aap constants ke saath bhi security set kar sakte ho:
+
+Public: By default saare constants public hote hain, yani inhe kahin bhi access kiya ja sakta hai
+.
+Private: Agar aapne private const likha hai, toh wo sirf usi class ke andar use ho payega
+.
+Protected: Yeh constant sirf apni class aur uski Child Class (inheritance) mein hi access ho sakta hai
+
+
+
+Practical Code Example (Copy ke liye):
+<?php
+class ConstantDemo {
+    // Constant declare karna
+    public const COLLEGE_NAME = "IIT College"; 
+
+    function getCollege() {
+        // Class ke andar 'self' se access
+        return self::COLLEGE_NAME; 
+    }
+}
+
+// Class ke bahar bina object ke access
+echo ConstantDemo::COLLEGE_NAME; // Output: IIT College
+
+$obj = new ConstantDemo();
+echo $obj->getCollege(); // Method ke zariye access
+?>
+
+
+
+Mukhya Point (Key Point for Notes): Constants ko ek baar value dene ke baad project mein kahin bhi update nahi kiya ja sakta. Agar aap value badalne ki koshish karoge, toh PHP Fatal Error dega
+.

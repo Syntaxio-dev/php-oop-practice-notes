@@ -1,0 +1,137 @@
+============================Final Keyword in PHP===============================================
+ 
+ 1. With Class
+
+Simple English Definition: When a class is declared as final, it cannot be inherited or extended by any other class.
+
+Hinglish Explanation:
+ Agar aap kisi class ke naam ke aage final keyword laga dete ho, toh us class ka koi child (subclass) nahi ban sakta
+
+. Matlab inheritance wahan par khatam ho jati hai. Agar koi use extends karne ki koshish karega, toh PHP error de dega
+
+
+
+2. With Method
+
+Simple English Definition: A method marked as final cannot be overridden by any child class.
+
+Hinglish Explanation: Agar aap chahte ho ki aapka beta (child class) aapki property toh le, par kisi khaas function (method) ka logic na badle, toh us method ke aage final laga do
+
+. Isse child class us method ko override nahi kar payegi
+
+
+
+Mukhya Baatein (Key Points for Notes):
+
+Inheritance Stop: final class ka koi subclass nahi ho sakta
+.
+Override Stop: final method ko child class mein phir se define nahi kiya ja sakta
+.
+Security: Yeh keyword tab kaam aata hai jab aap nahi chahte ki aapke core logic ke saath koi chhed-chaad kare
+
+
+Note: Aap ek hi class ya method ko ek saath abstract aur final nahi bana sakte, kyunki dono ka matlab ek dusre se ekdum ulta hai
+
+
+
+Practical Code Example (Copy karne ke liye):
+
+
+<?php
+// 1. Final Class ka example
+final class Honda {
+    public function message() {
+        echo "Yeh class extend nahi ho sakti.";
+    }
+}
+
+// Yeh error dega: Class Cars cannot extend final class Honda
+// class Cars extends Honda { } 
+
+// 2. Final Method ka example
+class Vehicle {
+    final public function startSound() {
+        echo "Vroom Vroom";
+    }
+}
+
+class Bike extends Vehicle {
+    // Yeh error dega: Cannot override final method Vehicle::startSound()
+    // public function startSound() { echo "Crr.."; }
+}
+?>
+
+
+==============================static keyword==========================================================
+
+Static Keyword in PHP
+
+1. Simple English Definition: The static keyword is used to declare properties and methods that belong to the class itself rather than to any specific instance (object). These members can be accessed directly using the class name without creating an object.
+
+
+2. Hinglish Explanation (Asaan Bhasha Mein):
+Direct Access: Static methods aur properties ko call karne ke liye object banana zaroori nahi hota. Aap directly ClassName::methodName() karke ise call kar sakte ho
+
+
+Performance: Kyunki object instantiate nahi karna padta, isliye static members ka use karne se code 10% se 20% tak fast ho jata hai
+.
+Shared Data: Static property poori class ke liye ek hi hoti hai. Agar aap 10 objects bhi banaoge, toh wo sabhi ek hi static value ko share karenge
+.
+Scope Resolution Operator: Inhe access karne ke liye double colon (::) ka use hota hai
+
+
+
+Static Members ko Access Kaise Karein?
+
+Class ke Bahar: ClassName::$propertyName ya ClassName::methodName().
+
+Class ke Andar: Agar class ke andar hi kisi static cheez ko use karna hai, toh $this kaam nahi karega (kyunki $this object ke liye hota hai). Iski jagah self:: keyword ka use hota hai
+
+
+
+
+
+
+
+Late Static Binding (static:: vs self::)
+
+
+Bhai, ye ek advanced concept hai jo inheritance mein kaam aata hai:
+self::: Yeh hamesha usi class ko refer karta hai jahan code likha gaya hai (Parent class)
+.
+static::: Yeh us class ko refer karta hai jiska object actual mein run-time par ban raha hai (Child class). Ise Late Static Binding kehte hain
+.
+Practical Code Example (Copy ke liye):
+<?php
+class Car {
+    // 1. Static Property
+    public static $totalWheels = 4;
+
+    // 2. Static Method
+    public static function companyName() {
+        return "Honda Motors";
+    }
+
+    public function display() {
+        // Class ke andar 'self' ka use
+        echo "Company: " . self::companyName();
+    }
+}
+
+// Bina object banaye access karna [Source 386]
+echo Car::$totalWheels; // Output: 4
+echo Car::companyName(); // Output: Honda Motors
+
+// Object ke saath normal method call karna
+$obj = new Car();
+$obj->display(); 
+?>
+
+
+
+
+Mukhya Baatein (Important Points):
+Static method ke andar aap non-static properties (jo bina static ke hain) ko access nahi kar sakte
+.
+Inka upyog tab karein jab koi function ya data har baar same rehne wala ho aur wo object ki state par depend na kare
+.

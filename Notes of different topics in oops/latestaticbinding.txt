@@ -1,0 +1,59 @@
+Late Static Binding (LSB) in PHP
+
+
+1. Simple English Definition: Late Static Binding is a feature in PHP that allows you to reference the class that was originally called at runtime, rather than the class where the method is defined. It is implemented using the static:: keyword.
+
+2. Hinglish Explanation (Asaan Bhasha Mein):
+
+Problem with self::: Jab hum inheritance use karte hain, toh self:: hamesha usi class ko refer karta hai jahan par woh code likha gaya hai (parent class)
+
+. Agar child class mein koi static property override ki gayi hai, toh self:: usey nahi dekh pata
+.
+Solution with static::: Late static binding static:: keyword ka use karti hai. Yeh runtime par check karta hai ki kaunsi class actually call hui hai (aksar child class), aur phir usi class ke method ya property ko access karta hai
+.
+Difference:
+self:: -> Parent class ko refer karta hai
+.
+static:: -> Us class ko refer karta hai jiska object runtime par ban raha hai (Child class)
+
+
+
+Practical Code Example (Copy karne ke liye):
+
+Maano hamari ek class hai jo sale tracks karti hai:
+
+<?php
+class CountrySale {
+    public static $totalSale = 1000; // Parent property
+
+    public static function getSale() {
+        // self::$totalSale likhne par hamesha 1000 aayega
+        // Lekin static:: use karne se child ki value aayegi
+        echo "Total Sale: " . static::$totalSale; 
+    }
+}
+
+class CitySale extends CountrySale {
+    public static $totalSale = 50; // Child property override
+}
+
+// Case 1: Parent call
+CountrySale::getSale(); // Output: Total Sale: 1000
+
+// Case 2: Child call (Late Static Binding)
+CitySale::getSale(); // Output: Total Sale: 50
+?>
+
+
+
+
+
+Mukhya Baatein (Key Points for Notes):
+Inheritance Mandatory: LSB ka asar tabhi dikhta hai jab ek class doosri class ko extends kar rahi ho aur static members ko override kiya gaya ho
+.
+Static Methods & Properties: Yeh sirf static context (::) mein hi kaam aata hai
+.
+Runtime Decision: Yeh decision program ke chalne (run-time) par hota hai ki kaunsa member call hoga, isiliye ise "Late" binding kehte hain
+.
+Flexibility: Isse parent class ke generic methods ko child class ki specific values ke saath use karna asaan ho jata hai
+.
