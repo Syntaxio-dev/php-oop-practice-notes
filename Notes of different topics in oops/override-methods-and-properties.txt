@@ -1,0 +1,71 @@
+===============================method-properties overrideing========================================
+
+Bhai, PHP OOP mein **Method aur Property Overriding** tab hoti hai jab hum **Inheritance** ka upyog karte hain. Iska main maqsad parent class ke default behavior ko child class ke hisaab se badalna hota hai.
+
+Niche tere liye simple English definitions aur Hinglish explanations ke saath notes diye gaye hain jinhe tu apni copy mein likh sakta hai:
+
+
+ **1. Method Overriding**
+
+Simple English Definition:** Method Overriding is a feature that allows a child class to provide a specific implementation of a method that is already provided by its parent class.
+
+Hinglish Explanation:** Jab parent class aur child class dono mein **same naam ka function (method)** hota hai, toh child class wala method parent wale method ko override kar deta hai (yani use hata deta hai). Jab aap child class ka object banakar us method ko call karoge, toh hamesha **child class wala logic** hi chalega.
+
+
+Example:
+*   Parent class `Teacher` mein ek method hai `nextExam()` jo "Maths" dikhata hai.
+*   Child class `Student` ne bhi `nextExam()` banaya jo "Science" dikhata hai.
+*   Ab `Student` ka object `Science` hi dikhayega kyunki usne parent ke method ko override kar diya hai.
+
+---
+2. Property Overriding**
+
+Simple English Definition:** Property Overriding occurs when a child class declares a property with the same name as one in the parent class, replacing the parent class's property value or access level.
+
+Hinglish Explanation:** Yeh bilkul method overriding ki tarah hai. Agar parent class mein koi variable (property) hai jaise `$city = "Delhi"`, aur child class ne bhi wahi property define kar di `$city = "Noida"`, toh child class ka object hamesha **Noida** hi dikhayega. Child ne parent ki property ko override kar diya hai.
+
+
+
+
+Mukhya Baatein (Important Points for Notes):**
+
+*   **Inheritance Mandatory:** Overriding sirf tabhi ho sakti hai jab ek class doosri class ko **`extends`** kar rahi ho.
+
+*   **Access Level Rule:** Child class mein override karte waqt aap access modifier ko **kam restrict** toh kar sakte ho (jaise protected se public), par **zyada restrict nahi** kar sakte (jaise public se private).
+
+
+*   **Final Keyword:** Agar parent class ke kisi method ke aage **`final`** keyword laga ho, toh child class use override **nahi** kar sakti. Isse error aata hai.
+
+
+*   **Parent Call:** Agar aapko child class ke andar se parent ka original method call karna hai, toh aap **`parent::methodName()`** ka use kar sakte ho.
+
+*   **Run-time Polymorphism:** Method overriding ko **Run-time Polymorphism** bhi kehte hain kyunki kaunsa method call hoga, yeh program ke chalne (run-time) par decide hota hai.
+
+
+
+### **Practical Code Example (Copy karne ke liye):**
+
+```php
+<?php
+class ParentClass {
+    public $city = "Delhi"; // Property
+
+    public function message() { // Method
+        echo "Message from Parent";
+    }
+}
+
+class ChildClass extends ParentClass {
+    public $city = "Noida"; // Property Overriding
+
+    public function message() { // Method Overriding
+        echo "Message from Child";
+    }
+}
+
+$obj = new ChildClass();
+echo $obj->city;    // Output: Noida
+$obj->message(); // Output: Message from Child
+?>
+```
+

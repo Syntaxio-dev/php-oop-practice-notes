@@ -1,0 +1,60 @@
+-------------------------Class and object ----------------------------------------------------------
+
+1. Class
+
+Simple English Definition: A Class is a blueprint or a template used to create objects. It defines the variables (properties) and functions (methods) that its objects will possess.
+
+Hinglish Explanation: Class ek naksha (blueprint) ya saancha (template) ki tarah hoti hai. Yeh batati hai ki ek cheez kaisi dikhegi aur usme kya-kya kaam karne ki taakat hogi. Iske andar hum variables (jise properties kehte hain) aur functions (jise methods kehte hain) ko ek saath ek group mein rakhte hain.
+
+2. Object
+
+Simple English Definition:** An Object is an **instance** or a **real copy** of a class. It is a real-world entity created using the class's blueprint.
+
+Hinglish Explanation:** Object class ka ek **jeeta-jaagta roop** ya **copy (instance)** hota hai. Ek hi class (blueprint) ka use karke hum bohot saare objects bana sakte hain, aur har object apna kaam alag se handle karta hai.
+
+---
+
+Real-World Example (Car Example)
+
+Maano hum ek car company khol rahe hain:
+
+*   **Class:** Car ka woh **design ya blueprint** jo paper par bana hai. Ismein likha hai ki car mein 4 wheels honge, 1 engine hoga aur 2 doors honge.
+
+*   **Object:** Us design se bani hui **asli cars** (jaise aapki white Safari ya black Tiago). Blueprint (Class) ek hi tha, par usse bani hui gaadiyaan (Objects) alag-alag hain.
+
+---
+
+### **PHP mein kaise likhte hain? (Syntax)**
+PHP mein class aur object banane ka tarika niche diya gaya hai:
+
+```php
+// 1. Class banana (Blueprint)
+class MathOperations {
+    public $val = 30; // Property
+
+    public function sum($a, $b) { // Method
+        return $a + $b;
+    }
+}
+
+// 2. Object banana (Instance)
+$mathObj = new MathOperations(); 
+
+// Object ke zariye method call karna
+echo $mathObj->sum(10, 20); // Output: 30
+```
+
+
+**Summary Notes:**
+*   **Class** ek idea ya template hai.
+*   **Object** us idea ka physical ya real implementation hai.
+*   Ek class se aap **multiple objects** create kar sakte ho, jo ek doosre se separete kaam karte hain.
+-----------------------------------------------------------------------------------------------------
+jis naam ki class bnate hai usi naam ki file bhi honi cahiye generally aur ek file ei ek hi class honi cahiye
+
+
+class ke andar variables ko property bolte hai aur functions ko methods bolte hai 
+
+ek class ke andar multiple objects bna sakte hai aur wo seprately kaam krte hai 
+
+class mei varibale declare krne ke liye public keyword ka use hote hai wese toh public privet protected ka hota hai most of the case mei public ka hi use hota hai 

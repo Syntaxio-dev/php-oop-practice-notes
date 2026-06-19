@@ -1,0 +1,58 @@
+
+================================Constructor in PHP Class==============================================
+
+
+
+1. Simple English Definition:*
+A Constructor is a **special method** inside a class that is **automatically called** whenever an object of that class is created. It is primarily used to initialize object properties or set up resources like database connections.
+
+2. Hinglish Explanation (Asaan Bhasha Mein):
+*   Constructor ek aisa function hai jo **apne aap (automatic)** chalta hai jaise hi aap class ka ek naya object banate ho.
+*   Iska naam hamesha fix hota hai: **`__construct()`** (Dhayan rahe, ismein do baar underscore `__` aata hai).
+*   Hume constructor ko alag se call karne ki zaroorat nahi padti, jaise hum baaki methods ko call karte hain.
+
+---
+
+### **Mukhya Baatein (Key Points to Remember):**
+*   **Automatic Execution:** Object bante hi ye sabse pehle execute hota hai.
+
+*   **Single Constructor:** PHP mein ek class ke andar sirf **ek hi constructor** ho sakta hai (aap multiple constructors nahi bana sakte).
+
+*   **Initialization:** Iska sabse bada fayda ye hai ki aap object bante hi properties ki default values set kar sakte ho ya database connect kar sakte ho.
+
+*   **Parameters:** Aap constructor ke zariye object banate waqt bahar se data (arguments) bhi bhej sakte ho.
+
+---
+
+### **Practical Code Example (Copy karne ke liye):**
+
+```php
+<?php
+class User {
+    public $name;
+
+    // 1. Constructor Define karna
+    function __construct($userName) {
+        // Jab object banega, ye line apne aap chalegi
+        $this->name = $userName; 
+        echo "Constructor Called: Welcome " . $this->name . "<br>";
+    }
+
+    function displayName() {
+        echo "User Name is: " . $this->name;
+    }
+}
+
+// 2. Object banana (Isi step par constructor apne aap call ho jayega)
+$user1 = new User("Anil Sidhu"); 
+
+// Baaki methods ko manually call karna padta hai
+$user1->displayName(); 
+?>
+```
+
+**Summary Note for Copy:**
+*   **Naam:** `__construct()`
+*   **Kaam:** Object ki shuruati settings (initialization) karna.
+*   **Specialty:** Manual call ki zarurat nahi, `new` keyword ke saath apne aap trigger hota hai.
+======================================================================================================

@@ -1,0 +1,52 @@
+PHP OOP mein **Inheritance** ek bahut hi powerful concept hai jo code ki **reuse-ability** ko badhata hai aur development time bachata hai. Iska matlab hai ki ek "Child Class" apne "Parent Class" ki properties (variables) aur methods (functions) ko apne aap hasil kar leti hai.
+
+Inheritance ke mukhya points niche diye gaye hain:
+
+### **1. Basic Concept aur Syntax**
+Inheritance mein do tarah ki classes hoti hain:
+*   **Parent Class (Super Class):** Woh class jiski khoobiyan di ja rahi hain.
+*   **Child Class (Sub Class):** Woh class jo features inherit kar rahi hai.
+*   **Keyword:** PHP mein inheritance ke liye **`extends`** keyword ka use hota hai.
+
+**Example:**
+```php
+class Teacher { // Parent Class
+    public function nextExam() {
+        echo "Next exam is Maths";
+    }
+}
+
+class Student extends Teacher { // Child Class
+    // Iske andar nextExam() likhne ki zarurat nahi, ye apne aap mil jayega
+}
+
+$s1 = new Student();
+$s1->nextExam(); // Output: Next exam is Maths
+```
+
+### **2. "Is-A" Relationship**
+Inheritance hamesha tab lagaya jata hai jab do classes ke beech **"Is-A"** ka rishta ho. 
+*   Jaise: "Programmer **is a** Person" ya "Car **is a** Vehicle".
+*   Agar rishta "Has-A" ho (jaise Car has a Tyre), toh wahan inheritance ki jagah object banakar kaam kiya jata hai.
+
+### **3. Method Overriding**
+Agar Parent aur Child class dono mein **same naam ka method** ho, toh Child class wala method Parent wale method ko daba deta hai (override kar deta hai).
+*   Jab aap Child class ka object banakar us method ko call karoge, toh hamesha **Child class wala implementation** hi chalega.
+*   Agar aapko Child class ke andar se Parent ka method call karna hai, toh **`super`** (Java ke context mein) ya PHP mein `parent::methodName()` ka upyog hota hai.
+
+### **4. Access Modifiers aur Security**
+Inheritance mein properties ka access in keywords par depend karta hai:
+*   **Public:** Child class mein asani se mil jati hain.
+*   **Protected:** Ye khas taur par inheritance ke liye bana hai. Ye property sirf usi class aur uski Child classes mein access ho sakti hai.
+*   **Private:** Ye Child class ko **nahi milti**. Private cheezein sirf usi class tak mehdood rehti hain jahan woh bani hain.
+
+### **5. Final Keyword (Inheritance ko rokna)**
+Agar aap chahte hain ki koi aapki class ko inherit na kar sake ya kisi method ko override na kar sake, toh aap **`final`** keyword ka use karte hain.
+*   **Final Class:** Iska koi bacha (child) nahi ban sakta.
+*   **Final Method:** Ise Child class mein override nahi kiya ja sakta.
+
+### **6. Single vs Multiple Inheritance**
+*   PHP ek **Single Inheritance** language hai, yani ek class sirf ek hi Parent class ko extend kar sakti hai.
+*   **Traits:** Multiple inheritance ki kami ko door karne ke liye PHP mein **Traits** ka use hota hai, jisse aap ek hi class mein kayi alag-alag sources se methods la sakte ho.
+
+Bhai, kya ab aap **Traits** ya **Abstract Classes** ke baare mein detail mein jaanna chahte ho?

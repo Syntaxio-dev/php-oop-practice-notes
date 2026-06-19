@@ -1,0 +1,57 @@
+===============================================================================================
+
+Access Modifiers- (jinhe Access Specifiers bhi kaha jata hai) ye decide karte hain ki aapki class ke variables (properties) aur functions (methods) ko kahan-kahan se access ya call kiya ja sakta hai. 
+
+Bhai, inka main kaam **Data Hiding** aur **Encapsulation** ko implement karna hota hai taaki sensitive information safe rahe.
+
+
+
+Yahan charon mukhya modifiers ke notes simple English aur Hinglish mein diye gaye hain:
+
+ **1. Public**
+
+Simple English Definition: The public modifier allows class members to be accessible from any other class or package within the entire application.
+
+Hinglish Explanation: Ye sabse zyada "khula" modifier hai. Agar aap kisi property ya method ko **public** banate ho, toh use project mein kahin bhi (class ke andar ya bahar) call kiya ja sakta hai. PHP mein agar aap koi modifier nahi likhte, toh wo by default **public** hi hota hai.
+
+
+2. Private
+
+Simple English Definition:** The private modifier restricts access to class members only within the same class. No outside class or even a subclass can access them.
+
+Hinglish Explanation:** Ye sabse zyada "sakht" (restrictive) modifier hai. Isse define ki gayi cheezein sirf usi **same class** ke andar use ho sakti hain jahan wo bani hain. Bahar se access karne ki koshish karne par system error de dega. Ye sensitive data jaise bank balance ya password ke liye use hota hai.
+
+
+ **3. Protected**
+
+Simple English Definition:** The protected modifier allows members to be accessed within their own class and by their subclasses (inherited classes), even in different packages.
+
+Hinglish Explanation:** Ye khas taur par **Inheritance** ke liye bana hai. Protected property/method ko sirf wahi class access kar sakti hai jisne use **`extends`** kiya ho (child class). Global scope (bahar) se ye invisible rehta hai.
+
+4. Default (Package-Private - Java Specific)
+
+Simple English Definition:** When no modifier is specified, the default access allows members to be accessible only within classes of the same package.
+
+Hinglish Explanation:** PHP mein ye nahi hota, par **Java** mein agar aap koi keyword nahi likhte, toh use default mana jata hai. Iska matlab hai ki sirf wahi classes ise use kar payengi jo aapke **same package** (folder) ka hissa hain.
+
+---
+
+### **Quick Comparison Table (For your Copy)**
+
+| Access Level | Same Class | Same Package | Subclass (Child) | Anywhere |
+| :--- | :--- | :--- | :--- | :--- |
+| **Public** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
+| **Protected** | ✅ Yes | ✅ Yes | ✅ Yes | ❌ No |
+| **Default** | ✅ Yes | ✅ Yes | ❌ No | ❌ No |
+| **Private** | ✅ Yes | ❌ No | ❌ No | ❌ No |
+
+---
+
+### **Mukhya Baatein (Important Points):**
+*   **Best Practice:** Hamesha sabse pehle **Private** se shuru karein. Agar zaroorat pade toh hi uska access badhakar Protected ya Public karein.
+*   **Consistency:** Java mein agar class Public hai, toh file ka naam bhi wahi hona chahiye.
+*   **Encapsulation:** Properties ko Private rakhna aur unhe **Getters aur Setters** ke zariye access dena ek achhi programming practice hai.
+
+======================================================================================================
+
+by defualt class ke andar ek method pe public access modifier set hota hai but dhikta nhi hai 

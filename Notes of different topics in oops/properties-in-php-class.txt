@@ -1,0 +1,69 @@
+------------------------------------properties in php class 
+1. Properties Kya Hain? (Definition)
+Simple English: Properties are variables defined inside a class to hold data related to the object
+
+Hinglish: Jab hum normal PHP (procedural) mein variable banate hain, toh use variable kehte hain, par jab wahi variable class ke andar define kiya jata hai, toh use Properties kaha jata hai
+ Yeh object ki "characteristics" ya "data" ko store karne ke liye use hoti hain
+
+
+
+
+2. Properties ko Kaise Define Karte Hain? (Declaration)
+Property define karne ke liye aapko teen keywords mein se ek use karna hota hai, jinhe Access Modifiers kehte hain
+
+Public: Iska matlab hai ki property ko class ke andar aur bahar kahin bhi access kiya ja sakta hai
+.
+Private: Yeh sirf usi class ke andar use ho sakti hai
+.
+Protected: Yeh class ke andar aur uski child (inherited) classes mein access ho sakti hai
+
+
+
+Syntax:
+
+
+class User {
+    public $name = "Anil Sidhu"; // Yeh ek Public Property hai [4]
+}
+
+
+3. Properties ko Access Kaise Karein?
+Properties ko do tariko se access kiya jata hai:
+Class ke Bahar (Using Object): Jab aap class ka object bana lete ho, toh arrow operator (->) ka upyog karke property access hoti hai
+
+
+Example: $p1->name;
+
+
+Class ke Andar (Using $this): Agar aap class ke kisi function (method) ke andar property use karna chahte ho, toh aapko $this keyword lagana padta hai
+
+ $this ka matlab hota hai "current class"
+
+Example: echo $this->name;
+
+
+
+4. Properties ko Update Karna
+Aap properties ki value ko object ke zariye ya methods ke zariye badal (update) sakte ho
+
+Aap parameters pass karke kisi property mein nayi value set kar sakte ho, jo ki dynamic kaam karne mein madad karta hai
+
+Ek Practical Example:
+
+class Product {
+    public $price = 100; // Property [4]
+
+    // Property ko update karne ka method
+    public function updatePrice($newPrice) {
+        $this->price = $newPrice; // Andar $this se access [6]
+    }
+}
+
+$obj = new Product();
+echo $obj->price; // Bahar arrow (->) se access [5]
+$obj->updatePrice(150); // Value update karna [7]
+
+
+Zaroori Point: Bina access modifier (jaise public) ke property declare karne par PHP error de sakta hai
+. Isliye hamesha in keywords ka use karein.
+------------------------------------------------------------------------------------------------------
