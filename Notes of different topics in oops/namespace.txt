@@ -1,0 +1,35 @@
+Namespace in PHP
+1. Simple English Definition: A Namespace is a virtual container or block of code that organizes related classes, interfaces, and functions, preventing name collisions between classes that share the same name
+.
+2. Hinglish Explanation (Asaan Bhasha Mein):
+Grouping: Namespace ka main kaam classes ki grouping karna hota hai taaki code behtar tarike se organized rahe
+.
+Name Conflict Resolution: Agar aapke project mein do classes ka naam bilkul ek jaisa hai, toh bina namespace ke aap unhe ek saath use nahi kar sakte kyunki PHP error dega
+. Namespace ki madad se aap dono same-name classes ko alag-alag group mein rakh kar ek hi project mein chala sakte ho
+.
+Top Declaration: Namespace ko declare karne ke liye namespace keyword ka upyog hota hai aur ise hamesha PHP file ke sabse upar (top) likhna zaroori hai; agar aap ise niche likhoge toh error aayega
+.
+Virtual Folders: Aap ise ek virtual folder ki tarah samajh sakte ho jo code level par classes ko alag rakhta hai
+.
+Namespace ko Use Kaise Karein? (Notes for Copy)
+Syntax: namespace MyNamespaceName;
+.
+Accessing Classes: Jab aap kisi namespace ke andar ki class ko call karte ho, toh aapko uska Fully Qualified Name (poora path) dena padta hai, jaise Teacher\JoiningDetails
+.
+Importing: Doosre namespace ki class ko use karne ka sabse asaan tarika use keyword hai, jisse aap class ko file ke top par import kar sakte ho
+.
+Sub-Namespaces: Aap ek namespace ke andar doosra namespace bhi bana sakte ho (Jaise: In\KgCoding\MyClass), jo bilkul ek folder ke andar doosre folder ki tarah kaam karta hai
+.
+Practical Example:
+<?php
+// 1. Namespace declare karna (Hamesha top par)
+namespace Teacher;
+
+class JoiningDetails {
+    public function getDetails() {
+        echo "Teacher's joining date: 01-01-2021";
+    }
+}
+?>
+Jab is class ko kisi doosri file mein use karna ho, toh aap use aise call karenge: $obj = new \Teacher\JoiningDetails();
+.

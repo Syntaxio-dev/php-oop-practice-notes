@@ -1,0 +1,40 @@
+Type Hinting / Type Declaration in PHP
+1. Simple English Definition: Type Hinting is the practice of specifying the expected data type (such as string, int, array, or object) for a function's parameters. If the data passed to the function does not match the specified type, PHP will throw an error.
+2. Hinglish Explanation (Asaan Bhasha Mein):
+Hint dena: Iska matlab hai ki hum function ko pehle hi bata dete hain ki use kis tarah ka data milne wala hai.
+Security: Maano aapne function banaya calculations ke liye jo sirf Integers (numbers) leta hai, par kisi ne galti se String (text) bhej diya. Type Hinting ke bina poora code chal jayega aur aakhri mein error aayega, par Type Hinting ke saath PHP shuruat mein hi rok dega.
+Usage: Ise aap normal functions aur Classes ke Methods dono mein use kar sakte ho.
+Type Hinting Kyun Zaroori Hai? (Benefits)
+Early Error Detection: Agar galti se galat data type pass ho jaye, toh PHP logic execute hone se pehle hi error de deta hai, jisse server ke resources aur time bachte hain.
+Better Debugging: Bina type hinting ke aksar vague warnings aati hain (jaise "Array to string conversion"), par type hinting se clear error milta hai ki "X type expected tha, par Y mila".
+Performance: Code zyada predictable ho jata hai aur maintenance asaan ho jati hai.
+Syntax aur Practical Examples
+A. Normal Function mein (Procedural)
+function getFruitName(string $name) {
+    echo "Fruit name is: " . $name;
+}
+
+getFruitName("Apple"); // Sahi chalega
+// getFruitName(["Apple", "Mango"]); // Error dega kyunki Array bhej diya jabki String chahiye thi [4, 6]
+B. Class ke Methods mein (OOP)
+class Products {
+    // Sirf array hi accept karega
+    public function countItems(array $data) {
+        echo count($data);
+    }
+}
+
+$obj = new Products();
+$obj->countItems(["Item1", "Item2"]); // Output: 2
+// $obj->countItems("Some Text"); // Fatal Error: Argument 1 must be of type array [5, 7, 8]
+Advanced: Union Types (Multiple Types Ek Saath)
+PHP mein aap ek saath do ya do se zyada data types bhi define kar sakte ho pipe (|) symbol ka use karke. Ise Union Types kehte hain.
+Example:
+// Isme Array ya String dono chalenge
+function displayData(array|string $info) {
+    print_r($info);
+}
+Important Points for Interview:
+Aliases: Type Hinting ko hi Type Declaration kaha jata hai.
+Supported Types: Aap int, string, bool, float, array, object, aur yahan tak ki kisi specific Class ka naam bhi as a type use kar sakte ho.
+Strict Mode: PHP mein hamesha declare(strict_types=1); ka use karna achhi practice mana jata hai taaki data types ekdum strict rahein.
