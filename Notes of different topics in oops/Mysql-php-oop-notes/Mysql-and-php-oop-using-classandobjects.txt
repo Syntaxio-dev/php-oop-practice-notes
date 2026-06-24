@@ -1,0 +1,72 @@
+MySQL with PHP OOP (Class & Objects)
+
+
+1. Database Connection (Using PDO)
+
+Simple English Definition: PDO (PHP Data Objects) is a database access layer that provides a uniform and secure method to interact with various databases in an object-oriented way.
+
+Hinglish Explanation: PHP aur MySQL ko connect karne ke liye hum PDO ka upyog karte hain kyunki yeh MySQLi se zyada secure aur behtar hota hai
+. Sabse pehle humein connection variables (host, dbname, username, password) declare karne padte hain aur phir new PDO() ka object banana padta hai
+
+
+Connection Code (config.php):
+
+<?php
+$host = "localhost";
+$username = "root";
+$password = "";
+$dbname = "college";
+
+try {
+    // Connection object banana
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    // Error handling set karna
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    echo "Connection Failed: " . $e->getMessage();
+}
+?>
+
+
+2. Using Database in a Class
+
+Simple English Definition: In an OOP approach, database operations are wrapped inside a class, and a constructor is used to initialize the database connection property.
+
+Hinglish Explanation: Hum ek specific class banate hain (jaise Student class) aur uske andar ek property rakhte hain DB connection store karne ke liye
+. Jab bhi is class ka object banta hai, Constructor (__construct) apne aap DB connection ko us property mein assign kar deta hai
+
+
+
+3. CRUD Operations (OOP Style)
+
+A. Data Read (Select) Karna:
+Explanation: Class ke andar ek method banaya jata hai jo SQL query ko prepare() karta hai aur phir execute() karke data fetch karta hai
+.
+public function getData() {
+    $stmt = $this->dbConn->prepare("SELECT * FROM students"); // Query prepare karna [6]
+    $stmt->execute(); // Execute karna [7]
+    return $stmt->fetchAll(); // Saara data return karna [7]
+}
+
+
+B. Data Insert Karna:
+Explanation: Insert karne ke liye hum placeholders ka use karte hain taaki SQL Injection se bacha ja sake. execute() method ke zariye data DB mein save ho jata hai
+.
+public function insertData($name, $course) {
+    $sql = "INSERT INTO students (name, course) VALUES (?, ?)";
+    $stmt = $this->dbConn->prepare($sql);
+    $stmt->execute([$name, $course]); // Data insert [9]
+}
+
+
+
+4. Mukhya Baatein (Key Points for Notes):
+
+Security: OOP aur PDO ka use karne se SQL Injection jaisi attacks se suraksha milti hai
+.
+Reusability: Ek baar class banne ke baad, aap use poore project mein kahin bhi call kar sakte ho
+.
+Well-Managed Code: DB se juda saara business logic ek hi jagah (Model/Class mein) hota hai, jisse debugging asaan ho jati hai
+.
+Auto-Initialization: Constructor ka use karke DB connection ko baar-baar manually connect karne ki zarurat nahi padti
+.
